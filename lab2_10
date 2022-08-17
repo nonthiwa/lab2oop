@@ -1,0 +1,63 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication8;
+
+/**
+ *
+ * @author LAB203_36
+ */
+import java.util.*;
+public class lab2_10 {
+    public static void main(String[] args) {
+        double salary,weight,age,numDay1,numDay2;
+        String name;
+
+        Scanner nam = new Scanner(System.in);
+        System.out.print("Please insert your name :");
+        name = nam.nextLine();
+        
+        Scanner ag = new Scanner(System.in);
+        System.out.print("Please insert your age :");
+        age = ag.nextDouble();
+        
+        Scanner come = new Scanner(System.in);
+        System.out.print("Please insert number of working days :");
+        numDay1 = come.nextDouble();    
+        
+        Scanner donkey = new Scanner(System.in);
+        System.out.print("Please insert number of absent days :");
+        numDay2 = donkey.nextDouble();    
+        
+        Scanner wei = new Scanner(System.in);
+        System.out.print("Please insert your body weight :");
+        weight = wei.nextDouble();
+        
+        if (age >= 21 && age <= 30){
+            salary = (numDay1 * 300) - (numDay2 * 50);
+        }
+        else if (age >= 31 && age <= 40){
+            salary = (numDay1 * 500) - (numDay2 * 50);
+        }
+        else if (age >= 41 && age <= 50){
+            salary = (numDay1 * 1000) - (numDay2 * 25);
+        }
+        else if (age >= 51 && age <= 60){
+            salary = (numDay1 * 3000);
+        }
+        
+        System.out.print("Hi, "+name);
+        System.out.print("Your salary is "+ salary +" Baht");
+
+        if (weight >= 10 && weight <= 60){
+            salary = salary + 5000;
+        }
+        else if (weight >= 61 && weight <= 90){
+            salary = salary + (5000 - ((weight-60)*10));
+        }
+        System.out.print("Your salary and bonus is "+ salary +" Baht");
+        
+    }
+}
