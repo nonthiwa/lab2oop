@@ -1,0 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication8;
+
+/**
+ *
+ * @author LAB203_36
+ */
+import java.util.*;
+public class Mycall {
+    public static void main(String[] args) {
+        double salary;
+        Scanner tube = new Scanner(System.in);
+        System.out.print("Enter your salary: ");
+        salary = tube.nextDouble();
+        double tax;
+        if (salary > 50000.00){
+        tax = salary * 0.1;
+        }
+        else {
+        tax = salary *0.05;
+        }
+        System.out.print(tax);
+    }
+}
