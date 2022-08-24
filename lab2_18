@@ -1,0 +1,13 @@
+import java.util.*;
+public class lab2_18 {
+    public static void main(String[] args) {
+        int many;
+        Scanner num = new Scanner(System.in);
+        System.out.print("กรุณาระบุความสูงตึก : ");
+        many = num.nextInt();
+        for(int x = 1; x <= many;x++)
+        {
+        System.out.println("#-#-#-#-#");
+        }
+    }
+}
