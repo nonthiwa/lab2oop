@@ -1,0 +1,32 @@
+import java.util.*;
+public class lab2_11 {
+    public static void main(String[] args) {
+        double money,total;
+        String type;
+        Scanner mon = new Scanner(System.in);
+        System.out.print("Input your money : ");
+        money = mon.nextDouble();
+        
+        Scanner typ = new Scanner(System.in);
+        System.out.print("Input your account type(Please type A B C or Xin uppercase) : ");
+        type = typ.nextLine();
+        total = 0;
+        if (type.equals("A"))
+        {
+            total = (money + (money*0.015));
+        }
+        else if (type.equals("B"))
+        {
+            total = (money + (money*0.02));
+        }
+        else if (type.equals("C"))
+        {
+            total = (money + (money*0.015));
+        }
+        else if (type.equals("X"))
+        {
+            total = (money + (money*0.05));
+        }
+        System.out.print("Your total money in one year = "+ total);
+    }
+}
