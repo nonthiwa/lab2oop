@@ -1,0 +1,78 @@
+public class main4 {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+        c.defineCat("Mew","White");
+        c.speak();
+
+        c.upWeight(5);
+        c.upHeight(10);
+        c.speak();
+
+        c.upWeight(-5);
+        c.upHeight(-10);
+        c.speak();
+ }
+}
+
+public class Cat {
+    public String name;
+    public String color;
+    public double height;
+    public double weight;
+    public void setWeight(double w) {
+        if(w > 0){
+            this.weight = w;
+        }
+        else {
+        System.out.println("Error");
+        }
+}
+    public void setHeight(double h) {
+        if(h > 0){
+            this.height = h;
+        }
+        else {
+        System.out.println("Error");
+        }
+}
+    public void setName(String n) {
+        this.name = n;
+}
+    public void setColor(String c) {
+        this.color = c;
+}
+    public void upWeight(double w) {
+        if (w >= 0){
+            this.weight += w;
+        }
+        else {
+            System.out.println("Error");
+        }
+}
+    public void downWeight(double w) {
+        if (w >= 0){
+            this.weight -= w;
+        }
+        else {
+            System.out.println("Error");
+        }
+}
+    public void upHeight(double h) {
+        if (h >= 0){
+            this.height += h;
+        }
+        else {
+            System.out.println("Error");
+        }
+}
+    public void defineCat(String n, String c) {
+        this.name = n;
+        this.color = c;
+}
+    public void speak() {
+        System.out.println("Name : "+name);
+        System.out.println("Color : "+color);
+        System.out.println("Height : "+height);
+        System.out.println("Weight : "+weight);
+}
+}
