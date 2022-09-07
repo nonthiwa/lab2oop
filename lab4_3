@@ -1,0 +1,69 @@
+public class Vehicle {
+    private int fuel;
+    private String topSpeed;
+    protected void setFuel(int i){
+        fuel = i;
+    }
+    protected void setTopSpeed(String n){
+        topSpeed = n;
+    }
+    protected int getFuel(){
+        return fuel;
+    }
+    protected String getTopSpeed(){
+        return topSpeed;
+    }
+    public void showInfo(){
+        System.out.println("Fuel is "+fuel+" litre and Top Speed is "+topSpeed+" m/s.");
+    }
+}
+
+
+public class Car extends Vehicle{
+    private String typeEngine;
+    public void setTypeEngine(String t){
+        typeEngine = t;
+    }
+    public String getTypeEngine(){
+        return typeEngine;
+    }
+    public void showCarInfo(){
+        System.out.println("Car engine is "+typeEngine+".");
+        System.out.println("Fuel is "+getFuel()+" litre and Top Speed is "+getTopSpeed()+" m/s.");
+    }
+    public void setCarInfo(int s,String t,String y){
+        setFuel(s);
+        setTopSpeed(t);
+        typeEngine = y;
+    }
+    public void move(){
+        if (getFuel() >= 50){
+            System.out.println("Move.");
+            int x = getFuel() - 50;
+            setFuel(x);
+        }
+        else{
+            System.out.println("Please add fuel.");
+        }
+    }
+}
+
+ public class Plane extends Vehicle{
+    public void showPlaneInfo(){
+        System.out.println("Plane detail is, Fuel is "+getFuel()+" litre and Top Speed is "+getTopSpeed()+" m/s.");
+    }
+    public void setPlaneInfo(int s,String t) {
+        setFuel(s);
+        setTopSpeed(t);
+    }
+    public void fly(){
+        if (getFuel() >= 200){
+            System.out.println("Fly.");
+            int y = getFuel() - 200;
+            setFuel(y);
+        }
+        else{
+            System.out.println("Please add fuel.");
+        }
+    }
+}
