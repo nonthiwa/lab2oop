@@ -1,0 +1,150 @@
+public class Account {
+    protected double balance;
+    protected String name;
+    public Account(double balance,String name) {
+        this.balance=balance;
+        this.name=name;
+    }
+    public void deposite(double a){
+        this.balance += a;
+        if (a > 0){
+            System.out.println(a+" baht is deposited to "+name+".");
+        }
+        else{
+            System.out.println("Input number must be a positive integer.");
+        }
+    }
+    public void withdraw(double a){
+        if ((this.balance - a) < 0){
+            System.out.print("Not enough money!");
+        }
+        this.balance -= a;
+        if (a > 0){
+            System.out.println(a+" baht is withdraw to "+name+".");
+        }
+        else{
+            System.out.println("Input number must be a positive integer.");
+        }
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+    public double getBalance(){
+        return balance;
+    }
+    public void showAccount(){
+        System.out.println(name+" account has "+balance+" baht.");
+    }
+}
+
+
+
+public class CheckingAccount extends Account{
+    private double credit;
+    public CheckingAccount(){
+        super(0,"");
+        setCredit(0);
+    }
+    public CheckingAccount(double balance,String name,double credit){
+        super(balance, name);
+        setCredit(credit);
+    }
+    public void setCredit(double credit){
+        this.credit = credit;
+        if (credit <= 0){
+            System.out.println("Input number must be a positive integer.");
+        }
+    }
+    public double getCredit(){
+        return credit;
+    }
+    public void withdraw(double a){
+        setBalance(getBalance()-a);
+        if ((getBalance() - a) >= 0){
+            System.out.println(a+" baht is withdrawn from "+getName()+" and your credit balance is "+credit+".");
+        }
+        else if (((getBalance() - a) < 0) && ((getBalance() - a)+credit)>=0){
+            System.out.println(a+" baht is withdrawn from "+getName()+" and your credit balance is "+credit+".");
+        }
+        else if (((getBalance() - a) < 0) && ((getBalance() - a)+credit)<0){
+            System.out.println("Not enough money!");
+        }
+    }
+    public void withdraw(String a){
+        double num = Double.parseDouble(a);
+        if(balance-num >= 0 || (balance-num)+credit>=0){
+            if(num < 0){
+                System.out.println("Input number must be a positive integer.");
+            }
+            else{
+                System.out.println(num+" baht is withdrawn from " +name+" and your credit balance is "+credit+".");
+                setBalance(balance-num);
+            }
+        }
+        else{
+            System.out.println("Not enough money!");
+        }
+    }
+    public String toString(){
+        return "The "+getName()+" account has "+getBalance()+" baht and "+credit+" credits.";
+    }
+}
+
+
+
+public class Customer extends CheckingAccount{
+    private String firstName;
+    private String lastName;
+    private CheckingAccount acct;
+    public Customer(){
+        this("", "", null);
+    }
+    public Customer(String firstName,String lastName){
+        this(firstName, lastName, null);
+    }
+    public Customer(String firstName,String lastName,CheckingAccount acct){
+        setFirstName(firstName);
+        setLastName(lastName);
+        setAcct(acct);
+    }
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+    public String getFirstName(){
+        return firstName;
+    }
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+    public void setAcct(CheckingAccount acct){
+        this.acct = acct;
+    }
+    public CheckingAccount getAcct(){
+        return acct;
+    }
+    public String toString(){
+        if (acct == null){
+            return firstName+" "+lastName+" doesn't have account.";
+        }
+        else {
+            return "The "+firstName+" account has "+getBalance()+" baht and "+getCredit()+" credits.";
+        }
+    }
+    public boolean equals(Customer c){
+        if (firstName.equals(lastName)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
