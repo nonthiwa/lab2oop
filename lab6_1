@@ -1,0 +1,102 @@
+public abstract class Item {
+    public abstract void use(Player P);
+}
+
+public class Mage extends Player{
+    public Mage(){
+        this.setHP(10);
+        this.setMP(20);
+        this.setATK(5);
+    }
+    public void addEquipment(Item i){
+        i.use(this);
+    }
+    public void attack(Player p){
+        p.attacked(this.getATK());
+        this.setMP(this.getMP()-5);
+
+    }
+    public void attacked(double n){
+        this.setHP(this.getHP()-n);
+    }
+}
+
+public class Novice extends Player{
+    public Novice(){
+        this.setHP(10);
+        this.setMP(10);
+        this.setATK(5);
+    }
+    public void addEquipment(Item i){
+        i.use(this);
+    }
+    public void attack(Player p){
+        p.attacked(this.getATK());
+    }
+    public void attacked(double n){
+        this.setHP(this.getHP()-n);
+    }
+}
+
+public abstract class Player {
+    private double HP;
+    private double MP;
+    private double EXP;
+    private double Money;
+    private double ATK;
+    public void setHP(double HP){
+        if(HP >= 0){
+            this.HP = HP;
+        }
+    }
+    public void setMP(double MP){
+        this.MP = MP;
+    }
+    public void setEXP(double EXP){
+        this.EXP = EXP;
+    }
+    public void setMoney(double Money){
+        this.Money = Money;
+    }
+    public void setATK(double ATK){
+        this.ATK = ATK;
+    }
+    public double getHP(){
+        return HP;
+    }
+    public double getMP(){
+        return MP;
+    }
+    public double getEXP(){
+        return EXP;
+    }
+    public double getMoney(){
+        return Money;
+    }
+    public double getATK(){
+        return ATK;
+    }
+    public abstract void attack(Player p);
+    public abstract void attacked(double n);
+    public String toString(){
+        return "HP : "+getHP()+" MP : "+getMP()+" ATK : "+getATK();
+    }
+}
+
+public class Potion extends Item{
+    public void use(Player P){
+        P.setHP(P.getHP()+10);
+    }
+}
+
+public class Rod extends Item {
+    public void use(Player P){
+        P.setATK(P.getATK()+5);
+    }
+}
+
+public class Sword extends Item{
+    public void use(Player P){
+        P.setATK(P.getATK()+10);
+    }
+}
