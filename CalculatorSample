@@ -3,7 +3,8 @@ import java.awt.*;
 public class CalculatorSample {
     public static void main(String[] args) {
         JFrame f = new JFrame("My Calculator");
-//        JPanel p = new JPanel();
+        JPanel p = new JPanel();
+        JTextField t = new  JTextField();
         JButton b0 = new JButton("0");
         JButton b1 = new JButton("1");
         JButton b2 = new JButton("2");
@@ -21,15 +22,17 @@ public class CalculatorSample {
         JButton b_total = new JButton("=");
         JButton bc = new JButton("c");
         
-        f.setSize(400,400);
-        f.setLayout(new GridLayout(4,4));
-        
-        f.add(b7); f.add(b8); f.add(b9); f.add(b_plus);
-        f.add(b4); f.add(b5); f.add(b6); f.add(b_nega);
-        f.add(b1); f.add(b2); f.add(b3); f.add(b_multi);
-        f.add(b0); f.add(bc); f.add(b_total); f.add(b_divi);
+        f.setLayout(new BorderLayout());
+        f.add(t, BorderLayout.NORTH);
+        f.add(p, BorderLayout.CENTER);
+        p.setLayout(new GridLayout(4,4));
+        p.add(b7); p.add(b8); p.add(b9); p.add(b_plus);
+        p.add(b4); p.add(b5); p.add(b6); p.add(b_nega);
+        p.add(b1); p.add(b2); p.add(b3); p.add(b_multi);
+        p.add(b0); p.add(bc); p.add(b_total); p.add(b_divi);
     
-        
+        f.setSize(400,400);
         f.setVisible(true);
+        f.pack();
     }
 }
