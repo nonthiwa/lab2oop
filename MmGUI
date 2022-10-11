@@ -1,0 +1,56 @@
+import javax.swing.*;
+
+public class MmGUI {
+    public static void main(String[] args) {
+        JDesktopPane desktopPane = new JDesktopPane();
+        JInternalFrame frame1 = new JInternalFrame("Application01", true, true, true,true);
+        frame1.getContentPane().add(new JLabel());
+        frame1.setSize(100, 100);
+        frame1.setVisible(true);
+        frame1.setLocation(50, 50);
+        
+        JInternalFrame frame2 = new JInternalFrame("Application02", true, true, true,true);
+        frame2.getContentPane().add(new JLabel());
+        frame2.setSize(200, 200);
+        frame2.setVisible(true);
+        frame2.setLocation(200, 200);
+        
+        JInternalFrame frame3 = new JInternalFrame("Application03", true, true, true,true);
+        frame3.getContentPane().add(new JLabel());
+        frame3.setSize(300, 300);
+        frame3.setVisible(true);
+        frame3.setLocation(500, 500);
+        
+        desktopPane.add(frame1);
+        desktopPane.add(frame2);
+        desktopPane.add(frame3);
+
+        JFrame fr = new JFrame("SubMenuItem Demo");
+        JMenuBar mb =  new JMenuBar();
+        JMenu m1 = new JMenu("File");
+        JMenu m2 = new JMenu("Edit");
+        JMenu m3 = new JMenu("View");
+        JMenuItem ms1 = new  JMenu("New");
+        JMenuItem mi2 = new  JMenuItem("Open");
+        JMenuItem mi3 = new  JMenuItem("Save");
+        JMenuItem mi4 = new  JMenuItem("Exit");
+        JMenuItem msi1 = new  JMenuItem("Window");
+        JMenuItem msi2 = new  JMenuItem("Message");
+        fr.setJMenuBar(mb);
+        mb.add(m1); mb.add(m2); mb.add(m3);
+        m1.add(ms1);
+        m1.add(mi2);
+        m1.addSeparator();
+        m1.add(mi3);
+        m1.addSeparator();
+        m1.add(mi4);
+        ms1.add(msi1);
+        m1.addSeparator();
+        ms1.add(msi2);
+        
+        fr.add(desktopPane);
+        fr.setSize(1000,1000);
+        fr.setVisible(true);
+    }
+
+}
