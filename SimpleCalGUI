@@ -1,0 +1,42 @@
+import javax.swing.*;
+import java.awt.*;
+public class SimpleCalGUI {
+    public static void main(String[] args) {
+        JFrame fr = new JFrame("My Calculator");
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
+        JPanel p3 = new JPanel();
+        JPanel p4 = new JPanel();
+        JTextField t1 = new  JTextField();
+        JTextField t2 = new  JTextField();
+        JTextField t3 = new  JTextField();
+        JButton b1 = new JButton("plus");
+        JButton b2 = new JButton("minus");
+        JButton b3 = new JButton("multiply");
+        JButton b4 = new JButton("divide");
+        
+        p1.setLayout(new BorderLayout());
+        p1.add(t1, BorderLayout.NORTH);
+        p1.add(t2, BorderLayout.CENTER);
+        
+        p2.setLayout(new FlowLayout());
+        p2.add(b1);
+        p2.add(b2);
+        p2.add(b3);
+        p2.add(b4);
+        
+        p3.setLayout(new BorderLayout());
+        p3.add(t3, BorderLayout.NORTH);
+        
+        
+        p4.setLayout(new BorderLayout());
+        p4.add(p1, BorderLayout.NORTH);
+        p4.add(p2, BorderLayout.CENTER);
+        p4.add(p3, BorderLayout.SOUTH);
+                
+        fr.add(p4);
+        fr.setSize(400,400);
+        fr.setVisible(true);
+        fr.pack();
+    }
+}
