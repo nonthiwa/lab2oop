@@ -1,0 +1,183 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author LAB203_70
+ */
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class CalculatorSample implements ActionListener {
+    private JFrame fr;
+    private JPanel np, cp;
+    private JTextField tf;
+    private JButton n0, n1, n2, n3, n4, n5, n6, n7, n8, n9, clear, add, sub, mul, div, calc;
+    
+    private int value, value2;
+    private String operation = "";
+    
+    public CalculatorSample() {
+        System.out.println(value);
+        fr = new JFrame("My Calculator");
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        tf = new JTextField();
+        tf.setEditable(false);
+        tf.setHorizontalAlignment(SwingConstants.RIGHT);
+        
+        cp = new JPanel(new GridLayout(4, 4));
+        n0 = new JButton("0");
+        n0.addActionListener(this);
+        n1 = new JButton("1");
+        n1.addActionListener(this);
+        n2 = new JButton("2");
+        n2.addActionListener(this);
+        n3 = new JButton("3");
+        n3.addActionListener(this);
+        n4 = new JButton("4");
+        n4.addActionListener(this);
+        n5 = new JButton("5");
+        n5.addActionListener(this);
+        n6 = new JButton("6");
+        n6.addActionListener(this);
+        n7 = new JButton("7");
+        n7.addActionListener(this);
+        n8 = new JButton("8");
+        n8.addActionListener(this);
+        n9 = new JButton("9");
+        n9.addActionListener(this);
+        clear = new JButton("c");
+        clear.addActionListener(this);
+        add = new JButton("+");
+        add.addActionListener(this);
+        sub = new JButton("-");
+        sub.addActionListener(this);
+        mul = new JButton("*");
+        mul.addActionListener(this);
+        div = new JButton("/");
+        div.addActionListener(this);
+        calc = new JButton("=");
+        calc.addActionListener(this);
+        
+        cp.setLayout(new GridLayout(4, 4));
+        cp.add(n7);
+        cp.add(n8);
+        cp.add(n9);
+        cp.add(add);
+        cp.add(n4);
+        cp.add(n5);
+        cp.add(n6);
+        cp.add(sub);
+        cp.add(n1);
+        cp.add(n2);
+        cp.add(n3);
+        cp.add(mul);
+        cp.add(n0);
+        cp.add(clear);
+        cp.add(calc);
+        cp.add(div);
+        
+        fr.setLayout(new BorderLayout());
+        fr.add(tf, BorderLayout.NORTH);
+        fr.add(cp, BorderLayout.CENTER);
+        
+        fr.setSize(300, 300);
+        fr.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        if (e.getSource().equals(n0)) {
+            tf.setText(tf.getText() + "0");
+        }
+        else if (e.getSource().equals(n1)) {
+            tf.setText(tf.getText() + "1");
+        }
+        else if (e.getSource().equals(n2)) {
+            tf.setText(tf.getText() + "2");
+        }
+        else if (e.getSource().equals(n3)) {
+            tf.setText(tf.getText() + "3");
+        }
+        else if (e.getSource().equals(n4)) {
+            tf.setText(tf.getText() + "4");
+        }
+        else if (e.getSource().equals(n5)) {
+            tf.setText(tf.getText() + "5");
+        }
+        else if (e.getSource().equals(n6)) {
+            tf.setText(tf.getText() + "6");
+        }
+        else if (e.getSource().equals(n7)) {
+            tf.setText(tf.getText() + "7");
+        }
+        else if (e.getSource().equals(n8)) {
+            tf.setText(tf.getText() + "8");
+        }
+        else if (e.getSource().equals(n9)) {
+            tf.setText(tf.getText() + "9");
+        }
+        else if (e.getSource().equals(add)) {
+            operation = "+";
+            value2 = Integer.parseInt(tf.getText());
+            tf.setText("");
+        }
+        else if (e.getSource().equals(sub)) {
+            operation = "-";
+            value2 = Integer.parseInt(tf.getText());
+            tf.setText("");
+        }
+        else if (e.getSource().equals(mul)) {
+            operation = "*";
+            value2 = Integer.parseInt(tf.getText());
+            tf.setText("");
+        }
+        else if (e.getSource().equals(div)) {
+            operation = "/";
+            value2 = Integer.parseInt(tf.getText());
+            tf.setText("");
+        }
+        else if (e.getSource().equals(calc)) {
+            
+            value = Integer.parseInt(tf.getText());
+            doPrevious(operation);
+            tf.setText(String.valueOf(value));
+            value = 0;
+            value2 = 0;
+            operation = "";
+        }
+        else if (e.getSource().equals(clear)) {
+            tf.setText("");
+            value = 0;
+            value2 = 0;
+            operation = "";
+        }
+    }
+    
+    private void doPrevious(String operator) {
+        
+        switch (operator) {
+            case "+":
+                value += value2;
+                break;
+            case "-":
+                value -= value2;
+                break;
+            case "*":
+                value *= value2;
+                break;
+            case "/":
+                value /= value2;
+                break;
+        }
+        operation = "";
+    }
+    
+    public static void main(String args[]) { 
+        new CalculatorSample();
+    }
+}
