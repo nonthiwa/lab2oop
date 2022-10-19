@@ -1,0 +1,76 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class TellerGUI implements ActionListener {
+    private JFrame fr;
+    private JPanel np, cp;
+    private JTextField tfBa, tfAm;
+    private JButton deposit, withdraw, exit;
+    private JLabel labelBa, labelAm;
+    
+    private Account account;
+    
+    public TellerGUI() {
+        account = new Account(6000, "John");
+        
+        fr = new JFrame("Teller GUI");
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        np = new JPanel(new GridLayout(2, 2));
+        labelBa = new JLabel(" Balance");
+        labelAm = new JLabel(" Amount");
+        tfBa = new JTextField(String.valueOf(account.getBalance()));
+        tfBa.setEditable(false);
+        tfAm = new JTextField();
+        np.add(labelBa);
+        np.add(tfBa);
+        np.add(labelAm);
+        np.add(tfAm);
+        
+        cp = new JPanel(new FlowLayout());
+        deposit = new JButton("Deposit");
+        withdraw = new JButton("Withdraw");
+        exit = new JButton("Exit");
+        cp.add(deposit);
+        cp.add(withdraw);
+        cp.add(exit);
+        
+        deposit.addActionListener(this);
+        withdraw.addActionListener(this);
+        exit.addActionListener(this);
+        
+        fr.setLayout(new GridLayout(2, 1));
+        fr.add(np);
+        fr.add(cp);
+        
+        fr.setSize(300, 200);
+        fr.setVisible(true);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(exit)) {
+            fr.dispose();
+        }
+        if (tfAm.getText().length() == 0) {
+            return;
+        }
+        if (e.getSource().equals(withdraw)) {
+            account.withdraw(Integer.parseInt(tfAm.getText()));
+            updateBalance();
+        }
+        else if (e.getSource().equals(deposit)) {
+            account.deposit(Integer.parseInt(tfAm.getText()));
+            updateBalance();
+        }
+    }
+    
+    private void updateBalance() {
+        tfBa.setText(String.valueOf(account.getBalance()));
+    }
+    
+    public static void main(String args[]) {
+        new TellerGUI();
+    }
+}
+
