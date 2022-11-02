@@ -96,20 +96,19 @@ public class CheckingAccount extends Account{
 
 
 public class Bank {
-    private  Account acct[];
+    private Account acct[];
     private int numAcct;
+    
     public Bank(){
         this.acct = new Account[10];
     }
-    public void addAccount(Account ac){
-        this.acct[numAcct] = ac;
+    public void addAccount(Account ac) {
+        this.acct[this.numAcct] = ac;
         this.numAcct++;
     }
-    public Account getAccount(int index){
+    public Account getAccount(int index) {
         return this.acct[index];
     }
-    public int getNumAccount(){
-        return numAcct;
+    public int getNumAccount() {
+        return this.numAcct;
     }
-}
-
